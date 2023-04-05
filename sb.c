@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstadd_front.c                                     :+:      :+:    :+:   */
+/*   sb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 08:56:13 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/03 15:10:02 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/04/04 13:12:05 by pastilhex         #+#    #+#             */
+/*   Updated: 2023/04/04 13:12:16 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-void	lstadd_front(t_list *list, int nbr)
+void	sb(t_list *list)
 {
-	t_list	*new;
+	int	tmp;
 
-	new = lstnew(nbr);
-	if (list)
-		new->next = list;
+	tmp = list->value;
+	list->value = list->next->value;
+	list->next->value = tmp;
 }

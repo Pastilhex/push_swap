@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstadd_back.c                                      :+:      :+:    :+:   */
+/*   sa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 09:01:26 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/03 15:10:05 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/04/04 13:11:38 by pastilhex         #+#    #+#             */
+/*   Updated: 2023/04/04 13:11:57 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-void	lstadd_back(t_list *list, int nbr)
+void	sa(t_list* list)
 {
-	t_list	*last;
+	int	tmp;
 
-	last = new(nbr);
-	if (last)
-	{
-		list->next = last;
-		return ;
-	}
+	tmp = list->value;
+	list->value = list->next->value;
+	list->next->value = tmp;
 }
