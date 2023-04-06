@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/02 18:40:10 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/05 14:00:18 by pastilhex        ###   ########.fr       */
+/*   Created: 2022/11/04 16:25:42 by ialves-m          #+#    #+#             */
+/*   Updated: 2023/04/05 13:54:28 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char** argv)
+int	ft_atoi(const char *str)
 {
-	int	n;
-	t_list	*node;
-	t_list	**header;
+	int	i;
+	int	s;
+	int	res;
 
-	header = (t_list **)malloc(sizeof(t_list*));
-	n = 1;
-	if (argc == 2)
+	i = 0;
+	s = 1;
+	res = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
 	{
-		node = newlst(ft_atoi(argv[n]));
-		*header = node;
+		if (str[i] == '-')
+			s *= -1;
+		i++;
 	}
-	else if (argc > 2)
+	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
 	{
-		node = newlst(ft_atoi(argv[n++]));
-		*header = node;
-		while (n < argc)
-			add_back_lst(header, ft_atoi(argv[n++]));
+		res *= 10;
+		res += str[i] - '0';
+		i++;
 	}
-	else
-		return (0);
-	print_list(*header);
-
-	return (0);
+	return (s * res);
 }

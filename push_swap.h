@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/05 12:04:48 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/05 13:53:39 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	add_front_lst(t_list **header, t_list *list, int nbr);
 void	add_back_lst(t_list **header, int nbr);
 t_list	*find_last(t_list *list);
 void	print_list(t_list *list);
+int		ft_atoi(const char *str);
 
 #endif
