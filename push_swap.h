@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/05 13:53:39 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/06 15:26:41 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,16 @@ typedef struct s_list
 	struct s_list *next;
 }	t_list;
 
+//Base Functions
 t_list	*newlst(int nbr);
-void	add_front_lst(t_list **header, t_list *list, int nbr);
-void	add_back_lst(t_list **header, int nbr);
+void	add_front_lst(t_list **header_a, t_list *list, int nbr);
+void	add_back_lst(t_list **header_a, int nbr);
 t_list	*find_last(t_list *list);
 void	print_list(t_list *list);
 int		ft_atoi(const char *str);
 
+//Operation Functions
+void	sa(t_list *list);
+void	sb(t_list *list);
+void	ss(t_list *list_a, t_list *list_b);
 #endif

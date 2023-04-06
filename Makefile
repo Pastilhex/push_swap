@@ -1,25 +1,22 @@
 NAME = push_swap
 
-NAME_BONUS = push_swap_bonus
+NAME_BONUS = checker
 
 CC = cc
 
-GNL = ./get_next_line/get_next_line.c \
-		./get_next_line/get_next_line_utils.c
-
 SRC	= ./*.c
 
-SRC_BONUS = $(wildcard fbonus/*.c)
+SRC_BONUS = $(wildcard bonus/*.c)
 
-CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lbsd
+CFLAGS = -Wall -Werror -Wextra -g
 
 RM = rm -f
 
 all:
-	$(CC) $(SRC) $(GNL) $(CFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(CFLAGS) -o $(NAME)
 
 bonus:
-	$(CC) $(SRC_BONUS) $(GNL) $(CFLAGS) -o $(NAME_BONUS)
+	$(CC) $(SRC_BONUS) $(CFLAGS) -o $(NAME_BONUS)
 
 clean:
 	$(RM) $(NAME)
