@@ -2,17 +2,22 @@ NAME = push_swap
 
 NAME_BONUS = checker
 
+#LIB = mini_libft/mini_libft.a
+
 CC = cc
 
-SRC	= ./*.c
+SRC	= $(wildcard *.c)
 
 SRC_BONUS = $(wildcard bonus/*.c)
+
+OBJS	= $(SRC:.c=.o)
 
 CFLAGS = -Wall -Werror -Wextra -g
 
 RM = rm -f
 
 all:
+	@echo "Compiling..."
 	$(CC) $(SRC) $(CFLAGS) -o $(NAME)
 
 bonus:
@@ -22,7 +27,7 @@ clean:
 	$(RM) $(NAME)
 
 fclean: clean
-	$(RM) $(NAME_BONUS)
+	$(RM) $(NAME_BONUS) a.out
 
 re: fclean all
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/06 15:26:41 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:09:44 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_list
 	struct s_list *next;
 }	t_list;
 
+
 //Base Functions
 t_list	*newlst(int nbr);
 void	add_front_lst(t_list **header_a, t_list *list, int nbr);
@@ -36,4 +37,6 @@ int		ft_atoi(const char *str);
 void	sa(t_list *list);
 void	sb(t_list *list);
 void	ss(t_list *list_a, t_list *list_b);
+void	pa(t_list **header_a, t_list **header_b);
+
 #endif
