@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/06 15:22:57 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:17:52 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*find_last(t_list *list)
 	return (list);
 }
 
-t_list	*newlst(int nbr)
+t_list	*new_list(int nbr)
 {
 	t_list	*var;
 
@@ -34,21 +34,21 @@ t_list	*newlst(int nbr)
 	return (NULL);
 }
 
-void	add_front_lst(t_list **header, t_list *list, int nbr)
+void	add_front_list(t_list **header, t_list *list, int nbr)
 {
 	t_list	*new;
 
-	new = newlst(nbr);
+	new = new_list(nbr);
 	new->next = list;
 	*header = new;
 }
 
-void	add_back_lst(t_list **header, int nbr)
+void	add_back_list(t_list **header, int nbr)
 {
 	t_list	*new;
 	t_list	*last;
 
-	new = newlst(nbr);
+	new = new_list(nbr);
 	last = find_last(*header);
 	last->next = new;
 }
@@ -60,5 +60,20 @@ void	print_list(t_list *list)
 		printf("%d\n", list->value);
 		list = list->next;
 	}
-	printf("Print Done\n");
+	printf("\n");
+}
+
+int	size_list(t_list **header)
+{
+	int		i;
+	t_list	*list;
+
+	i = 0;
+	list = *header;
+	while (list != NULL)
+	{
+		i++;
+		list = list->next;
+	}
+	return (i);
 }
