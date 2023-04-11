@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/10 18:17:52 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/11 08:09:07 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	print_list(t_list *list)
 		printf("%d\n", list->value);
 		list = list->next;
 	}
-	printf("\n");
+	if (list != NULL)
+		printf("\n");
 }
 
 int	size_list(t_list **header)
@@ -76,4 +77,34 @@ int	size_list(t_list **header)
 		list = list->next;
 	}
 	return (i);
+}
+
+int	len(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+int ft_isdigit(int c)
+{
+	if(c >= 48 && c <= 57)
+		return c;
+	return 0;
+}
+
+int	check_digit(char *input)
+{
+	int	i;
+
+	i = 0;
+	while (input[i] != '\0')
+		if (!ft_isdigit(input[i++]))
+			return (0);
+	if (ft_atoi(input) < INT_MIN || ft_atoi(input) > INT_MAX)
+		return (0);
+	return (1);
 }

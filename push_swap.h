@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/10 21:02:26 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/11 07:47:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -33,6 +34,8 @@ void	add_back_list(t_list **header_a, int nbr);
 void	print_list(t_list *list);
 int		size_list(t_list **header);
 int		ft_atoi(const char *str);
+int		ft_isdigit(int c);
+int		check_digit(char *input);
 
 //Operation Functions
 void	sa(t_list **header);
