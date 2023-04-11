@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/11 08:09:07 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:45:39 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*find_last(t_list *list)
 	return (list);
 }
 
-t_list	*new_list(int nbr)
+t_list	*new_list(long long nbr)
 {
 	t_list	*var;
 
@@ -57,7 +57,7 @@ void	print_list(t_list *list)
 {
 	while (list != NULL)
 	{
-		printf("%d\n", list->value);
+		printf("%lld\n", list->value);
 		list = list->next;
 	}
 	if (list != NULL)
@@ -101,10 +101,28 @@ int	check_digit(char *input)
 	int	i;
 
 	i = 0;
+	if (input[i] == '-')
+		i++;
 	while (input[i] != '\0')
 		if (!ft_isdigit(input[i++]))
 			return (0);
-	if (ft_atoi(input) < INT_MIN || ft_atoi(input) > INT_MAX)
+	if (ft_atoll(input) < INT_MIN || ft_atoll(input) > INT_MAX)
 		return (0);
 	return (1);
+}
+
+void	ft_putstr(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s)
+		while (s[i] != '\0')
+			write(1, &s[i++], 1);
+}
+
+void	display_error(void)
+{
+	ft_putstr("Error\n");
+	exit (0);	
 }

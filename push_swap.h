@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/11 07:47:32 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:50:23 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,35 @@
 
 typedef struct s_list
 {
-	int	value;
+	long long int	value;
 	struct s_list *next;
 }	t_list;
 
 
 //Base Functions
-t_list	*new_list(int nbr);
+t_list	*new_list(long long nbr);
 t_list	*find_last(t_list *list);
 void	add_front_list(t_list **header_a, t_list *list, int nbr);
 void	add_back_list(t_list **header_a, int nbr);
 void	print_list(t_list *list);
 int		size_list(t_list **header);
-int		ft_atoi(const char *str);
+long long	ft_atoll(const char *str);
 int		ft_isdigit(int c);
 int		check_digit(char *input);
+void	ft_putstr(char *s);
+void	display_error(void);
 
 //Operation Functions
-void	sa(t_list **header);
-void	sb(t_list **header);
-void    ss(t_list **header_a, t_list **header_b);
+void	sa(t_list **header, int flag);
+void	sb(t_list **header, int flag);
+void    ss(t_list **header_a, t_list **header_b, int flag);
 void	pa(t_list **header_a, t_list **header_b);
 void	pb(t_list **header_a, t_list **header_b);
-void	ra(t_list **header);
-void	rb(t_list **header);
-void	rr(t_list **header_a, t_list **header_b);
-void	rra(t_list **header);
-void	rrb(t_list **header);
-void	rrr(t_list **header_a, t_list **header_b);
+void	ra(t_list **header, int flag);
+void	rb(t_list **header, int flag);
+void	rr(t_list **header_a, t_list **header_b, int flag);
+void	rra(t_list **header, int flag);
+void	rrb(t_list **header, int flag);
+void	rrr(t_list **header_a, t_list **header_b, int flag);
 
 #endif

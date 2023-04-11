@@ -3,24 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   sb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:12:05 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/10 20:41:16 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/11 16:30:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sb(t_list **header)
+void	sb(t_list **header, int flag)
 {
 	int		tmp;
 	t_list	*list;
 
-	printf("sb\n");
-	list = *header;
-	tmp = list->value;
-	list->value = list->next->value;
-	list->next->value = tmp;
-	print_list(*header);
+	if (size_list(header) >= 2)
+	{
+		if (flag != 1)
+			printf("sb\n");
+		list = *header;
+		tmp = list->value;
+		list->value = list->next->value;
+		list->next->value = tmp;
+	}
 }
