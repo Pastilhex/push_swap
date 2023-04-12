@@ -2,8 +2,6 @@ NAME = push_swap
 
 NAME_BONUS = checker
 
-#LIB = mini_libft/mini_libft.a
-
 CC = cc
 
 SRC	= $(wildcard *.c)

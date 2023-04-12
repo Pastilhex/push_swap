@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/11 16:50:23 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/11 21:42:06 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_isdigit(int c);
 int		check_digit(char *input);
 void	ft_putstr(char *s);
 void	display_error(void);
+void	begin(t_list **header_a, t_list **header_b);
 
 //Operation Functions
 void	sa(t_list **header, int flag);
