@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:20:16 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/11 16:35:27 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/13 11:37:24 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_list **header, int flag)
+void	ra(t_sort *sort, t_list **header, int flag)
 {
 	t_list	*list;
 	t_list	*last;
@@ -27,4 +27,5 @@ void	ra(t_list **header, int flag)
 		last->next = list;
 		list->next = NULL;
 	}
+	sort->last_value = find_last(header);
 }

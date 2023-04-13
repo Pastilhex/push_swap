@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:10 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/12 12:08:07 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:16:49 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	main(int argc, char	**argv)
 		else_main(argc, argv, header_a);
 	else
 		display_error();
-	//pa(header_a, header_b);
 	begin(header_a, header_b);
 	free (header_a);
 	free (header_b);

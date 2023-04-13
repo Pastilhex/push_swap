@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/11 15:45:39 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/13 11:56:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ t_list	*find_last(t_list *list)
 	while (list->next != NULL)
 		list = list->next;
 	return (list);
+}
+
+void	find_smallest(t_sort *sort, t_list *list)
+{
+	sort->smallest = list->value;
+	while (list->next != NULL)
+		if (list->value < list->next->value)
+			list = list->next;
+		else if (list->value > list->next->value)
+		{
+			sort->smallest = list->next->value;
+			list->value = list->next;
+		}
 }
 
 t_list	*new_list(long long nbr)
@@ -77,6 +90,44 @@ int	size_list(t_list **header)
 		list = list->next;
 	}
 	return (i);
+}
+
+int	half_list(t_list **header)
+{
+	int		i;
+	int		half;
+	int		sum;
+	t_list	*list;
+
+	i = 0;
+	sum = 0;
+	half = size_list(header) / 2;
+	list = *header;
+	while (list != NULL && i <= half)
+	{
+		i++;
+		sum += list->value;
+		list = list->next;
+	}
+	return (sum);
+}
+
+int	sum_list(t_list **header)
+{
+	int		i;
+	int		sum;
+	t_list	*list;
+
+	i = 0;
+	sum = 0;
+	list = *header;
+	while (list != NULL)
+	{
+		i++;
+		sum += list->value;
+		list = list->next;
+	}
+	return (sum);
 }
 
 int	len(char *str)
