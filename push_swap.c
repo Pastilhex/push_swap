@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:10 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/12 22:16:49 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:03:10 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void	else_main(int argc, char **argv, t_list **header_a)
 		*header_a = list_a;
 	}
 	while (n < argc)
+	{
 		if (check_digit(argv[n]))
 			add_back_list(header_a, ft_atoll(argv[n++]));
-	else
-		display_error();
+		else
+			display_error();
+	}
 }
 
 int	main(int argc, char	**argv)

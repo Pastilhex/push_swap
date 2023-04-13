@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   rrb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:57:45 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/11 16:31:26 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:05:04 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rrb(t_list **header, int flag)
+void	rrb(t_sort *sort, t_list **header, int flag)
 {
 	t_list	*last;
 	t_list	*list;
 
+	(void) sort;
 	if (size_list(header)>= 2)
 	{
 		if (flag != 1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:47:29 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/11 16:16:02 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/13 20:43:10 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	pa(t_list **header_a, t_list **header_b)
 		list_a = *header_a;
 		list_b = *header_b;
 		tmp = (t_list *)malloc(sizeof(t_list));
-		tmp = new_list((list_a->value));
+		tmp = new_list(list_a->value);
 		tmp->next = list_b;
 		*header_b = tmp;
 		*header_a = list_a->next;
