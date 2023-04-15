@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/13 20:19:51 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/14 21:45:59 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	find_smallest(t_sort *sort, t_list *list);
 void	find_biggest(t_sort *sort, t_list *list);
 int		find_last_value(t_list *list);
 void	pp(t_list **header_a, t_list **header_b);
+int		verify_order(t_list **header);
+int		verify_in_order(t_sort	*sort, t_list **header);
 
 //Operation Functions
 void	sa(t_list **header, int flag);

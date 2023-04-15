@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/13 20:23:12 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/14 22:08:22 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void	find_smallest(t_sort *sort, t_list *list)
 
 void	find_biggest(t_sort *sort, t_list *list)
 {
-	sort->biggest = list->value;
+	sort->biggest = INT_MIN;
 	while (list->next != NULL)
-		if (list->value > list->next->value)
+		if (list->value < sort->biggest)
 			list = list->next;
-		else if (list->value < list->next->value)
+		else if (list->value > sort->biggest)
 		{
-			sort->biggest = list->next->value;
+			sort->biggest = list->value;
 			list = list->next;
 		}
 }
@@ -119,6 +119,42 @@ int	size_list(t_list **header)
 		list = list->next;
 	}
 	return (i);
+}
+
+int	verify_order(t_list **header)
+{
+	t_list	*list;
+
+	list = *header;
+	while (list->next != NULL)
+	{
+		if (list->value > list->next->value)
+			return (0);
+		list = list->next;
+	}
+	return (1);
+}
+
+int	verify_in_order(t_sort	*sort, t_list **header)
+{
+	t_list	*list;
+
+	list = *header;
+	find_smallest(sort, *header);
+	find_biggest(sort, *header);
+	while (list->next != NULL)
+	{
+		if (list->value > list->next->value)
+		{
+			if (list->value == sort->biggest && list->next->value == sort->smallest)
+				list = list->next;
+			else
+				return (0);
+		}
+		list = list->next;
+	}
+	printf("verify in order OK\n");
+	return (1);
 }
 
 int	half_list(t_list **header)
