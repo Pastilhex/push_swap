@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/15 18:05:27 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/15 21:15:15 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ typedef struct s_list
 typedef struct s_sort
 {
 	t_list	*list;
-	int		first_value;
+	int		first_run;
 	int		last_value;
 	int		last_value_b;
 	int		smallest;
 	int		biggest;
+	int		full_size;
 	t_list	*list_a;
 	t_list	*list_b;
 }	t_sort;
@@ -58,6 +59,7 @@ int		verify_order(t_list **header);
 int		verify_in_order(t_sort	*sort, t_list **header);
 int		verify_rev_order(t_list **header);
 int		steps_to_big(t_sort *sort, t_list *list);
+int		half_list(t_list **header);
 
 //Operation Functions
 void	sa(t_list **header, int flag);

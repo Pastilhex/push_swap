@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/15 19:51:08 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/15 21:52:27 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,11 +126,10 @@ void	pp(t_list **header_a, t_list **header_b)
 	(void) header_a;
 	(void) header_b;
 
-// 	printf("list a: ");
-// 	print_list(*header_a);
-// 	printf("list b: ");
-// 	print_list(*header_b);
-// 
+ 	printf("list a: ");
+ 	print_list(*header_a);
+ 	printf("list b: ");
+ 	print_list(*header_b);
 }
 
 int	size_list(t_list **header)
@@ -178,7 +177,8 @@ int	verify_in_order(t_sort	*sort, t_list **header)
 			else
 				return (0);
 		}
-		list = list->next;
+		if (list->next != NULL)
+			list = list->next;
 	}
 	printf("verify in order\n");
 	return (1);
