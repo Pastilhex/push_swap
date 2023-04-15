@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/14 22:08:22 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/15 19:51:08 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ int	find_last_value(t_list *list)
 
 void	find_smallest(t_sort *sort, t_list *list)
 {
-	sort->smallest = list->value;
-	while (list->next != NULL)
-		if (list->value > list->next->value)
+	if (list != NULL)
+		sort->smallest = INT_MAX;
+	else
+		sort->smallest = list->value;
+	while (list != NULL)
+		if (list->value > sort->smallest)
 			list = list->next;
-		else if (list->value < list->next->value)
+		else if (list->value < sort->smallest)
 		{
 			sort->smallest = list->value;
 			list = list->next;
@@ -41,8 +44,11 @@ void	find_smallest(t_sort *sort, t_list *list)
 
 void	find_biggest(t_sort *sort, t_list *list)
 {
-	sort->biggest = INT_MIN;
-	while (list->next != NULL)
+	if (list != NULL)
+		sort->biggest = INT_MIN;
+	else
+		sort->biggest = list->value;
+	while (list != NULL)
 		if (list->value < sort->biggest)
 			list = list->next;
 		else if (list->value > sort->biggest)
@@ -50,6 +56,23 @@ void	find_biggest(t_sort *sort, t_list *list)
 			sort->biggest = list->value;
 			list = list->next;
 		}
+}
+
+int	steps_to_big(t_sort *sort, t_list *list)
+{
+	int	i;
+
+	i = 0;
+	sort->biggest = INT_MIN;
+	while (list->next != NULL)
+		if (list->value < sort->biggest)
+			list = list->next;
+		else if (list->value > sort->biggest)
+		{
+			i++;
+			list = list->next;
+		}
+	return (i);
 }
 
 t_list	*new_list(long long nbr)
@@ -100,10 +123,14 @@ void	print_list(t_list *list)
 
 void	pp(t_list **header_a, t_list **header_b)
 {
-	printf("list a: ");
-	print_list(*header_a);
-	printf("list b: ");
-	print_list(*header_b);
+	(void) header_a;
+	(void) header_b;
+
+// 	printf("list a: ");
+// 	print_list(*header_a);
+// 	printf("list b: ");
+// 	print_list(*header_b);
+// 
 }
 
 int	size_list(t_list **header)
@@ -153,7 +180,21 @@ int	verify_in_order(t_sort	*sort, t_list **header)
 		}
 		list = list->next;
 	}
-	printf("verify in order OK\n");
+	printf("verify in order\n");
+	return (1);
+}
+
+int	verify_rev_order(t_list **header)
+{
+	t_list	*list;
+
+	list = *header;
+	while (list->next != NULL)
+	{
+		if (list->value < list->next->value)
+			return (0);
+		list = list->next;
+	}
 	return (1);
 }
 

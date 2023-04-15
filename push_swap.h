@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/14 21:45:59 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/15 18:05:27 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_sort
 	t_list	*list;
 	int		first_value;
 	int		last_value;
+	int		last_value_b;
 	int		smallest;
 	int		biggest;
 	t_list	*list_a;
@@ -55,6 +56,8 @@ int		find_last_value(t_list *list);
 void	pp(t_list **header_a, t_list **header_b);
 int		verify_order(t_list **header);
 int		verify_in_order(t_sort	*sort, t_list **header);
+int		verify_rev_order(t_list **header);
+int		steps_to_big(t_sort *sort, t_list *list);
 
 //Operation Functions
 void	sa(t_list **header, int flag);
