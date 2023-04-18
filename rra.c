@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rra.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:46:50 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/13 14:55:43 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/18 14:50:57 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	rra(t_sort *sort, t_list **header, int flag)
 	t_list	*last;
 	t_list	*list;
 
+	find_last_value(*header);
 	if (size_list(header) >= 2)
 	{
 		if (flag != 1)
@@ -27,7 +28,7 @@ void	rra(t_sort *sort, t_list **header, int flag)
 		last = list->next;
 		list->next = NULL;
 		last->next = *header;
-		sort->last_value = find_last_value(*header);
+		sort->last_value_a = find_last_value(*header);
 		*header = last;
 	}
 }
