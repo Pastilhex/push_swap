@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/18 19:39:41 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/18 22:32:45 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	begin(t_list **header_a, t_list **header_b)
 	while (1)
 	{
 		pp(header_a, header_b);
-		printf("\n");
 		usleep(150000);
 		if (!verify_order(header_a) || size_list(header_b) != 0)
 			unsorted(&s, header_a, header_b);
@@ -79,10 +78,15 @@ void	unsorted(t_sort *s, t_list **ha, t_list **hb)
 			rra(s, ha, 0);
 
 		//	A < B	A < C	B < C
-		else if (a->value < a->next->value && a->value < s->last_value_a && a->next->value < s->last_value_a)
+		else if (size_list(hb) < 3 && a->value < a->next->value && a->value < s->last_value_a && a->next->value < s->last_value_a)
 			pb(ha, hb);
-	}
 
+		else if (size_list(hb) > 1 && a->value < a->next->value && a->value < s->last_value_a && a->next->value < s->last_value_a && a->value > b->value)
+			pb(ha, hb);
+		
+		else if (size_list(hb) > 1 && a->value < a->next->value && a->value < s->last_value_a && a->next->value < s->last_value_a && a->value < b->value)
+			rb(s, hb, 0);
+	}
 	else if (verify_in_order(s, ha) && size_list(hb) == 0)
 	{
 		//falta contar o numero de passos ate ao inicio da lista e escolher se faz ra ou rra
