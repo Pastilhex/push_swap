@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/15 21:52:27 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/18 12:11:22 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	find_biggest(t_sort *sort, t_list *list)
 			list = list->next;
 		}
 }
+
 
 int	steps_to_big(t_sort *sort, t_list *list)
 {
@@ -126,9 +127,9 @@ void	pp(t_list **header_a, t_list **header_b)
 	(void) header_a;
 	(void) header_b;
 
- 	printf("list a: ");
+ 	//printf("list a: ");
  	print_list(*header_a);
- 	printf("list b: ");
+ 	//printf("list b: ");
  	print_list(*header_b);
 }
 
@@ -180,7 +181,7 @@ int	verify_in_order(t_sort	*sort, t_list **header)
 		if (list->next != NULL)
 			list = list->next;
 	}
-	printf("verify in order\n");
+	//printf("verify in order\n");
 	return (1);
 }
 
@@ -195,6 +196,29 @@ int	verify_rev_order(t_list **header)
 			return (0);
 		list = list->next;
 	}
+	return (1);
+}
+
+int	verify_rev_in_order(t_sort	*sort, t_list **header)
+{
+	t_list	*list;
+
+	list = *header;
+	find_smallest(sort, *header);
+	find_biggest(sort, *header);
+	while (list->next != NULL)
+	{
+		if (list->value < list->next->value)
+		{
+			if (list->value == sort->smallest && list->next->value == sort->biggest)
+				list = list->next;
+			else
+				return (0);
+		}
+		if (list->next != NULL)
+			list = list->next;
+	}
+	//printf("verify in order\n");
 	return (1);
 }
 

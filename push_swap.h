@@ -6,7 +6,7 @@
 /*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/15 21:15:15 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/17 13:39:13 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ typedef struct s_sort
 	int		smallest;
 	int		biggest;
 	int		full_size;
-	t_list	*list_a;
-	t_list	*list_b;
+	int		total_sum;
+	t_list	*a;
+	t_list	*b;
 }	t_sort;
 
 //Base Functions
@@ -60,6 +61,9 @@ int		verify_in_order(t_sort	*sort, t_list **header);
 int		verify_rev_order(t_list **header);
 int		steps_to_big(t_sort *sort, t_list *list);
 int		half_list(t_list **header);
+int		sum_list(t_list **header);
+int		verify_rev_in_order(t_sort	*sort, t_list **header);
+
 
 //Operation Functions
 void	sa(t_list **header, int flag);
@@ -73,9 +77,9 @@ void	rr(t_sort *sort, t_list **header_a, t_list **header_b, int flag);
 void	rra(t_sort *sort, t_list **header, int flag);
 void	rrb(t_sort *sort, t_list **header, int flag);
 void	rrr(t_sort *sort, t_list **header_a, t_list **header_b, int flag);
-void	sorted_filled(t_sort *sort, t_list **header_a, t_list **header_b);
-void	sorted_empty(t_sort *sort, t_list **header_a, t_list **header_b);
-void	unsorted_filled(t_sort *sort, t_list **header_a, t_list **header_b);
-void	unsorted_empty(t_sort *sort, t_list **header_a, t_list **header_b);
+void	unsorted(t_sort *sort, t_list **header_a, t_list **header_b);
+void	sorted(t_sort *sort, t_list **header_a, t_list **header_b);
+void	sort_list_asc(t_sort *s, t_list **ha, t_list **hb);
+void	sort_list_desc(t_sort *s, t_list **ha,t_list **hb);
 
 #endif
