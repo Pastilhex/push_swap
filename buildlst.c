@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/19 12:03:57 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/19 22:42:22 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,15 @@ int	steps_to_value(t_sort *sort, t_list *list, int value)
 
 	i = 0;
 	(void) sort;
-	while (list->next != NULL || !(value > list->value && value < list->next->value))
+	while (list->next != NULL)
 	{
 		i++;
-		list = list->next;
+		if (value > list->value && value < list->next->value)
+			return (i);
+		else
+			list = list->next;
 	}
-	return (i);
+	return (0);
 }
 
 t_list	*new_list(long long nbr)

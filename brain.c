@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/19 12:07:55 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/19 22:30:44 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,12 +154,17 @@ void	sort_list_a(t_sort *s, t_list **ha, t_list **hb)
 		else if (a->value > b->value && a->value < s->last_value_b)
 			pb(ha, hb);
 
+		// > <
+		else if (a->value < b->value && a->value > s->last_value_b && size_list(hb) < 3)
+			pb(ha, hb);
+
 		// < < * < > * > >
-		else if (steps_to_value(s, *hb, a->value) < size_list(hb) / 2)
+		else if (steps_to_value(s, *hb, a->value) <= size_list(hb) / 2)
 			rb(s, hb, 0);
 
 		else if (steps_to_value(s, *hb, a->value) > size_list(hb) / 2)
 			rrb(s, hb, 0);
+	
 	}
 }
 
