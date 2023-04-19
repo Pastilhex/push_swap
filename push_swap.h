@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/18 23:14:00 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:57:19 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		verify_order(t_list **header);
 int		verify_in_order(t_sort	*sort, t_list **header);
 int		verify_rev_order(t_list **header);
 int		steps_to_big(t_sort *sort, t_list *list);
+int		steps_to_value(t_sort *sort, t_list *list, int value);
 int		half_list(t_list **header);
 int		sum_list(t_list **header);
 int		verify_rev_in_order(t_sort	*sort, t_list **header);
@@ -80,7 +81,7 @@ void	rrb(t_sort *sort, t_list **header, int flag);
 void	rrr(t_sort *sort, t_list **header_a, t_list **header_b, int flag);
 void	unsorted(t_sort *sort, t_list **header_a, t_list **header_b);
 void	sorted(t_sort *sort, t_list **header_a, t_list **header_b);
-void	sort_list_asc(t_sort *s, t_list **ha, t_list **hb);
-void	sort_list_desc(t_sort *s, t_list **ha,t_list **hb);
+void	sort_list_a(t_sort *s, t_list **ha, t_list **hb);
+void	sort_list_b(t_sort *s, t_list **ha, t_list **hb);
 
 #endif

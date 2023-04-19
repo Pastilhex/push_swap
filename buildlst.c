@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/18 15:45:00 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:03:57 by pastilhex        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,20 @@ int	steps_to_big(t_sort *sort, t_list *list)
 			i++;
 			list = list->next;
 		}
+	return (i);
+}
+
+int	steps_to_value(t_sort *sort, t_list *list, int value)
+{
+	int	i;
+
+	i = 0;
+	(void) sort;
+	while (list->next != NULL || !(value > list->value && value < list->next->value))
+	{
+		i++;
+		list = list->next;
+	}
 	return (i);
 }
 
