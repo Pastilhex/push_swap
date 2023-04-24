@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/19 11:57:19 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/24 18:09:06 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_sort
 	int		biggest;
 	int		full_size;
 	int		total_sum;
+	int		big_flag;
 	t_list	*a;
 	t_list	*b;
 }	t_sort;
@@ -82,6 +83,7 @@ void	rrr(t_sort *sort, t_list **header_a, t_list **header_b, int flag);
 void	unsorted(t_sort *sort, t_list **header_a, t_list **header_b);
 void	sorted(t_sort *sort, t_list **header_a, t_list **header_b);
 void	sort_list_a(t_sort *s, t_list **ha, t_list **hb);
-void	sort_list_b(t_sort *s, t_list **ha, t_list **hb);
+void	big_list(t_sort *s, t_list **header_a, t_list **header_b);
+void	big_unsorted(t_sort *s, t_list **header_a, t_list **header_b);
 
 #endif

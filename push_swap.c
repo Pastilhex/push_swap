@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:10 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/18 14:47:56 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:09:47 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	main(int argc, char	**argv)
 	}
 	else if (argc > 2)
 		else_main(argc, argv, header_a);
+	else if (argc == 1)
+		exit (0);
 	else
 		display_error();
 	begin(header_a, header_b);
