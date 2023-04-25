@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/20 19:26:53 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/04/25 17:49:13 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,27 @@ int	steps_to_value(t_sort *sort, t_list *list, int value)
 	while (list->next != NULL)
 	{
 		i++;
-		if (sort->print == 1)
-			printf("value %lld > %d < %lld next\n", list->value, value, list->next->value);
 		if ((value > list->value && value < list->next->value) || (list->value == sort->smallest && list->next->value == sort->biggest) || (sort->last_value_b == sort->smallest && list->value == sort->biggest))
 			return (i);
 		else
 			list = list->next;
+	}
+	return (i);
+}
+
+int	steps_to(t_sort *sort, t_list *list, int value)
+{
+	int	i;
+
+	i = 0;
+	(void) sort;
+	while (list->next != NULL)
+	{
+		if (value > list->value)
+			i++;
+		else
+			return (i);			
+		list = list->next;
 	}
 	return (i);
 }

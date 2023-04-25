@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/24 18:09:06 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:16:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ typedef struct s_sort
 	int		full_size;
 	int		total_sum;
 	int		big_flag;
+	int		start_point;
+	int		count;
+	int		x;
 	t_list	*a;
 	t_list	*b;
 }	t_sort;
@@ -66,7 +69,9 @@ int		steps_to_value(t_sort *sort, t_list *list, int value);
 int		half_list(t_list **header);
 int		sum_list(t_list **header);
 int		verify_rev_in_order(t_sort	*sort, t_list **header);
-
+int		steps_to(t_sort *sort, t_list *list, int value);
+void	choose_side(t_sort *s, t_list **ha, t_list **hb);
+void	restart_sort(t_sort *s, t_list **ha, t_list **hb);
 
 //Operation Functions
 void	sa(t_list **header, int flag);
