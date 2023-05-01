@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:32:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/01 18:54:24 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/01 22:36:47 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,19 @@ void	big_list(t_sort *s, t_list **header_a, t_list **header_b)
 	(void) b;
 	a = *header_a;
 	b = *header_b;
-	s->start_point = size_list(header_a);
-	s->big_flag = 0;
-	s->xfactor = 1;
-	s->count = 0;
-	s->lock_ha = 0;
+	s->full_size = size_list(header_a);
+	s->ha_size = s->full_size / 2;
+	s->hb_size = s->full_size - s->ha_size;
+	s->last_value_a = find_last_value(*header_a);
+	if (s->print)
+	{
+		printf("Full Size:%d\n", s->full_size);
+		printf("ha Size:%d\n", s->ha_size);
+		printf("hb Size:%d\n", s->hb_size);
+		printf("Last ha value:%d\n", s->last_value_a);
+		printf("Steps till last:%d\n", steps_to(s, *header_a, s->last_value_a));
+	}	
+	s->first_step = 1;
 	while (1)
 	{
 		if (verify_order(header_a) == 1 && size_list(header_b) == 0)
@@ -42,121 +50,46 @@ void	big_list(t_sort *s, t_list **header_a, t_list **header_b)
 
 void	big_unsorted(t_sort *s, t_list **ha, t_list **hb)
 {
-	t_list *a;
+	//t_list *a;
 	t_list *b;
+	int		split;
 
-	a = *ha;
+	//a = *ha;
 	b = *hb;
-	(void) a;
 	find_smallest(s, *ha);
 	find_biggest(s, *ha);
-
-	if (s->start_point == 0)
-	{
-		s->xfactor++;
-		s->start_point = size_list(ha);
-	}
-
-	if (s->print)
-		printf("X Factor:%d\n", s->xfactor);
-
-	if (s->big_flag == 0)
-	{
-		while (size_list(hb) < s->xfactor * 3 && s->start_point >= 0)
-		{
-			pb(ha, hb);
-			s->count++;
-		}
-		s->big_flag = 1;
-		s->count *= 2;
-		// if (s->print)
-		// 	printf("1 Count:%d\n", s->count);
-	}
-
-	if (size_list(hb) != 0)
-	{
-		if (size_list(hb) != 0 && !verify_order(hb) && s->xfactor == 1)
-		{
-			if (s->print)
-				printf("Sort b\n");	
-			sort_three_b(s, ha, hb);
-		}
-		else if (!verify_order_x(ha, s->xfactor * 3) && s->lock_ha == 0 && s->xfactor == 1)
-		{
-			if (s->print)
-				printf("Sort a\n");	
-			sort_three_a(s, ha, hb);
-			s->lock_ha = 1;
-		}
-		else if (b->value < a->value)
-		{
-			pa(ha, hb);
-			ra(s, ha, 0);
-			s->start_point--;
-			s->count--;
-			// if (s->print)
-			// 	printf("2 Count:%d\n", s->count);
-		}
-		else if (size_list(hb) != 0 && a->value < b->value && s->count - size_list(hb) > 0)
-		{
-			ra(s, ha, 0);
-			s->start_point--;
-			s->count--;
-			// if (s->print)
-			// 	printf("3 Count:%d\n", s->count);
-		}
-
-		else if (size_list(hb) != 0 && s->count - size_list(hb) >= 0)
-		{
-			pa(ha, hb);
-			ra(s, ha, 0);
-			s->start_point--;
-			s->count--;
-			// if (s->print)
-			// 	printf("4 Count:%d\n", s->count);
-		}
+	split = s->ha_size;
 	
-		else if (size_list(hb) == 0 && s->count > 0)
+	//Divisão do array em 2 metades não ordenadas
+	while (split > 0 && s->first_step == 1)
+	{
+		pb(ha, hb);
+		split--;
+	}
+	s->first_step = 0;
+	
+	//Ordenação em conjuntos de 6 números
+	if (s->second_step == 1)
+	{
+		while (size_list(hb) != 0)
 		{
-			ra(s, ha, 0);
-			s->start_point--;
-			s->count--;
-			// if (s->print)
-			// 	printf("5 Count:%d\n", s->count);	
+			//if ()
+			
+			if (size_list(hb) >= 3)
+				sort_three_b(s, ha, hb);
+			else if (size_list(hb) == 2)
+				if (b->value > b->next->value)
+					sb(hb, 0);
 		}
-		
 	}
-	else if (s->count > 0)
-	{
-		ra(s, ha, 0);
-		s->start_point--;
-		s->count--;
-		// if (s->print)
-		// 	printf("6 Count:%d\n", s->count);	
-		
-	}
-	else if (size_list(hb) == 0 && s->count < 0)
-		s->big_flag = 0;
-
-	if (s->count <= 0)
-	{
-		s->big_flag = 0;
-		s->count = 0;
-		s->lock_ha = 0;
-	}
-	if (s->print)
-		printf("Total Array Counter:%d\n", s->start_point);
 }
 
 void	sort_three_a(t_sort *s, t_list **ha, t_list **hb)
 {
 	t_list *a;
-	t_list *b;
 
-	(void) a;
-	(void) b;
+	(void) hb;
 	a = *ha;
-	b = *hb;
 	while (!(a->value < a->next->value && a->next->value < a->next->next->value))
 	{
 		if (a->value < a->next->value && a->value < a->next->next->value && a->next->value > a->next->next->value)
@@ -197,12 +130,9 @@ void	sort_three_a(t_sort *s, t_list **ha, t_list **hb)
 
 void	sort_three_b(t_sort *s, t_list **ha, t_list **hb)
 {
-	t_list *a;
 	t_list *b;
 
-	(void) a;
-	(void) b;
-	a = *ha;
+	(void) ha;
 	b = *hb;
 	if (b->value < b->next->value && b->value < b->next->next->value && b->next->value > b->next->next->value)
 		rrb(s, hb, 0);

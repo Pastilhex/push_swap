@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/29 22:38:32 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/01 22:16:11 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ typedef struct s_sort
 	int		smallest;
 	int		biggest;
 	int		full_size;
+	int		ha_size;
+	int		hb_size;
 	int		total_sum;
-	int		big_flag;
-	int		start_point;
-	int		count;
-	int		lock_ha;
-	int		xfactor;
+	int		sorted_nbrs;
+	int		first_step;
+	int		second_step;
 	t_list	*a;
 	t_list	*b;
 }	t_sort;

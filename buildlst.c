@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/29 22:30:18 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/01 22:35:55 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	steps_to(t_sort *sort, t_list *list, int value)
 	(void) sort;
 	while (list->next != NULL)
 	{
-		if (value > list->value)
+		if (value != list->value)
 			i++;
 		else
 			return (i);			
