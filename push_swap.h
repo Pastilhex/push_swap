@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/26 21:40:05 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/29 22:38:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_sort
 	int		big_flag;
 	int		start_point;
 	int		count;
-	int		small_sort;
+	int		lock_ha;
 	int		xfactor;
 	t_list	*a;
 	t_list	*b;
@@ -75,6 +75,7 @@ void	choose_side(t_sort *s, t_list **ha, t_list **hb);
 void	restart_sort(t_sort *s, t_list **ha, t_list **hb);
 void	sort_three_a(t_sort *s, t_list **ha, t_list **hb);
 void	sort_three_b(t_sort *s, t_list **ha, t_list **hb);
+int		verify_order_x(t_list **header, int x);
 
 //Operation Functions
 void	sa(t_list **header, int flag);

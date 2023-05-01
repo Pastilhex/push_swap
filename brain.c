@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/26 20:19:29 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/29 22:43:50 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	begin(t_list **header_a, t_list **header_b)
 		if (*header_b)
 			s.last_value_b = find_last_value(*header_b);
 
-		if (size_list(header_a) <= 10)
+		if (size_list(header_a) <= 3)
 		{
 			if (!verify_order(header_a) || size_list(header_b) != 0)
 				unsorted(&s, header_a, header_b);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/04/25 17:49:13 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/04/29 22:30:18 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,23 @@ int	verify_order(t_list **header)
 		if (list->value > list->next->value)
 			return (0);
 		list = list->next;
+	}
+	return (1);
+}
+
+int	verify_order_x(t_list **header, int x)
+{
+	t_list	*list;
+	int		xtimes;
+
+	xtimes = 0;
+	list = *header;
+	while (list->next != NULL && xtimes < x)
+	{
+		if (list->value > list->next->value)
+			return (0);
+		list = list->next;
+		xtimes++;
 	}
 	return (1);
 }
