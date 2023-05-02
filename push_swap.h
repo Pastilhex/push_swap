@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/02 06:25:12 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:44:27 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_sort
 	int		steps_to_last_a;
 	int		first_step;
 	int		second_step;
+	int		x_args;
 	t_list	*a;
 	t_list	*b;
 }	t_sort;
