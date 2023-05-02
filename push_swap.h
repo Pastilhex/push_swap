@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/01 22:16:11 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/02 06:25:12 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ typedef struct s_sort
 	int		hb_size;
 	int		total_sum;
 	int		sorted_nbrs;
+	int		mini_cycle;
+	int		cycle_a;
+	int		cycle_b;
+	int		steps_to_last_a;
 	int		first_step;
 	int		second_step;
 	t_list	*a;

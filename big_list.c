@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:32:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/01 22:36:47 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/02 06:47:39 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	big_list(t_sort *s, t_list **header_a, t_list **header_b)
 	s->full_size = size_list(header_a);
 	s->ha_size = s->full_size / 2;
 	s->hb_size = s->full_size - s->ha_size;
-	s->last_value_a = find_last_value(*header_a);
+	s->steps_to_last_a = steps_to(s, *header_a, find_last_value(*header_a)) - s->hb_size;
+	s->first_step = 1;
+	s->second_step = 1;
+	s->mini_cycle = 0;
 	if (s->print)
 	{
 		printf("Full Size:%d\n", s->full_size);
@@ -33,7 +36,6 @@ void	big_list(t_sort *s, t_list **header_a, t_list **header_b)
 		printf("Last ha value:%d\n", s->last_value_a);
 		printf("Steps till last:%d\n", steps_to(s, *header_a, s->last_value_a));
 	}	
-	s->first_step = 1;
 	while (1)
 	{
 		if (verify_order(header_a) == 1 && size_list(header_b) == 0)
@@ -50,14 +52,12 @@ void	big_list(t_sort *s, t_list **header_a, t_list **header_b)
 
 void	big_unsorted(t_sort *s, t_list **ha, t_list **hb)
 {
-	//t_list *a;
+	t_list *a;
 	t_list *b;
 	int		split;
 
-	//a = *ha;
+	a = *ha;
 	b = *hb;
-	find_smallest(s, *ha);
-	find_biggest(s, *ha);
 	split = s->ha_size;
 	
 	//Divisão do array em 2 metades não ordenadas
@@ -68,19 +68,83 @@ void	big_unsorted(t_sort *s, t_list **ha, t_list **hb)
 	}
 	s->first_step = 0;
 	
-	//Ordenação em conjuntos de 6 números
+	//Ordenação em conjuntos de 6 números ordenados
 	if (s->second_step == 1)
 	{
-		while (size_list(hb) != 0)
+		if (size_list(hb) != 0)
 		{
-			//if ()
+			if (s->mini_cycle == 0)
+			{
+				//Confere quantos números há em ha
+				if (s->steps_to_last_a >= 3)
+				{
+					sort_three_a(s, ha, hb);
+					s->cycle_a = 3;
+				}
+				else if (s->steps_to_last_a == 2)
+				{
+					if (a->value > a->next->value)
+					{
+						sa(ha, 0);
+						s->cycle_a = 2;
+					}
+				}
+				else
+					s->cycle_a = 1;
+
+				//Confere quantos numeros há em hb
+				if (size_list(hb) >= 3)
+				{
+					sort_three_b(s, ha, hb);
+					s->cycle_b = 3;
+				}
+				else if (size_list(hb) == 2)
+				{
+					if (b->value > b->next->value)
+					{
+						sb(hb, 0);
+						s->cycle_b = 2;
+					}
+				}
+				else
+					s->cycle_b = 1;
 			
-			if (size_list(hb) >= 3)
-				sort_three_b(s, ha, hb);
-			else if (size_list(hb) == 2)
-				if (b->value > b->next->value)
-					sb(hb, 0);
+				//Active mini cycle
+				s->mini_cycle = 1;
+			}			
+			else if (s->cycle_a && s->cycle_b)
+			{
+				if (a->value < b->value)
+				{
+					ra(s, ha, 0);
+					s->cycle_a--;
+					s->steps_to_last_a--;
+				}
+				else if (a->value > b->value)
+				{
+					pa(ha, hb);
+					s->cycle_b--;
+					s->cycle_a++;
+					s->steps_to_last_a++;
+				}
+			}
+			else if (s->cycle_a && !s->cycle_b)
+			{
+				ra(s, ha, 0);
+				s->cycle_a--;
+				s->steps_to_last_a--;
+			}
+			else if (!s->cycle_a && s->cycle_b)
+			{
+				pa(ha, hb);
+				s->cycle_b--;
+				s->cycle_a++;
+				s->steps_to_last_a++;
+			}
+			else if (!s->cycle_a && !s->cycle_b)
+				s->mini_cycle = 0;
 		}
+		printf("Steps to last a %d\n", s->steps_to_last_a);
 	}
 }
 
