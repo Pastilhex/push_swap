@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/02 21:44:27 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:29:57 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int		verify_rev_in_order(t_sort	*sort, t_list **header);
 int		steps_to(t_sort *sort, t_list *list, int value);
 void	choose_side(t_sort *s, t_list **ha, t_list **hb);
 void	restart_sort(t_sort *s, t_list **ha, t_list **hb);
-void	sort_three_a(t_sort *s, t_list **ha, t_list **hb);
-void	sort_three_b(t_sort *s, t_list **ha, t_list **hb);
+void	sort_ha(t_sort *s, t_list **ha, t_list **hb);
+void	sort_hb(t_sort *s, t_list **ha, t_list **hb);
 int		verify_order_x(t_list **header, int x);
 
 //Operation Functions
