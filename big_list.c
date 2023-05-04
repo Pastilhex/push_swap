@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:32:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/04 07:39:17 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:07:36 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ void	big_list(t_sort *s, t_list **header_a, t_list **header_b)
 			big_unsorted(s, header_a, header_b);
 		if (s->print)
 			pp(header_a, header_b);
+
 		s->full_size++;
+
 		if (s->print)
-			usleep(50000);
+			usleep(150000);
+
 	}
 }
 
@@ -52,6 +55,7 @@ void	big_unsorted(t_sort *s, t_list **ha, t_list **hb)
 	{
 		pb(ha, hb);
 		split--;
+		s->full_size++;
 	}
 	s->first_step = 0;
 
@@ -155,7 +159,7 @@ void	reverse_sort(t_sort *s, t_list **ha, t_list **hb)
 	}
 	else if (a->value < a->next->value && a->value > s->last_value_a)
 		ra(s, ha, 0);
-			
+
 }
 
 void	sort_hb(t_sort *s, t_list **ha, t_list **hb)
@@ -173,34 +177,12 @@ void	sort_hb(t_sort *s, t_list **ha, t_list **hb)
 		s->mix_cycle = 0;
 		s->reverse_cycle = 1;
 	}
-	else if (size_list(ha) == 1 && a->value < b->value)
-		pa(ha, hb);
-	else if (b->value > a->value && b->value > s->last_value_a && a->value < s->last_value_a)
-	{
-		pa(ha, hb);
-	}
-	else if (b->value < a->value && b->value < s->last_value_a && a->value < s->last_value_a)
-	{
-		pa(ha, hb);
-	}
-	else if (b->value > a->value && b->value < s->last_value_a && a->value < s->last_value_a)
-	{
-		ra(s, ha, 0);
-		s->steps_to_last_a--;
-	}
-	else if (b->value < a->value && b->value > s->last_value_a && a->value > s->last_value_a)
-	{
-		pa(ha, hb);
-	}
-	else if (b->value < a->value && b->value < s->last_value_a && a->value > s->last_value_a)
-	{
-		ra(s, ha, 0);
-		s->steps_to_last_a--;
-	}
-	else if (b->value > a->value && b->value > s->last_value_a && a->value > s->last_value_a)
-	{
-		ra(s, ha, 0);
-		s->steps_to_last_a--;
-	}
+
+	else if (a->value > b->value && a->value > b->next->value)
+		rb(s, hb, 0);
+
+	else if (a->value > b->value && a->value < b->next->value)
+		pb(ha, hb);
+
 
 }

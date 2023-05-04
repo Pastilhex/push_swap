@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/04 05:28:09 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:27:06 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	begin(t_list **header_a, t_list **header_b)
 		}
 		else
 			big_list(&s, header_a, header_b);
-		s.full_size++;
+		//s.full_size++;
 		if (s.print)
 			pp(header_a, header_b);
 		
