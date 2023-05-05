@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/05 05:39:37 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 18:00:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,8 @@ int	size_list(t_list **header)
 	}
 	return (i);
 }
+
+
 
 int	verify_order(t_list **header)
 {
