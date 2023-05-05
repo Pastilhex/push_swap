@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/04 06:46:52 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 06:56:34 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	sort_ha(t_sort *s, t_list **ha, t_list **hb);
 void	sort_hb(t_sort *s, t_list **ha, t_list **hb);
 int		verify_order_x(t_list **header, int x);
 void	reverse_sort(t_sort *s, t_list **ha, t_list **hb);
+void	final_sort(t_sort *s, t_list **ha, t_list **hb);
 
 //Operation Functions
 void	sa(t_list **header, int flag);

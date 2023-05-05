@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/01 22:35:55 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 05:39:37 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	steps_to_value(t_sort *sort, t_list *list, int value)
 	while (list->next != NULL)
 	{
 		i++;
-		if ((value > list->value && value < list->next->value) || (list->value == sort->smallest && list->next->value == sort->biggest) || (sort->last_value_b == sort->smallest && list->value == sort->biggest))
+		if ((value > list->value && value < list->next->value) || (list->value == sort->biggest && list->next->value == sort->smallest) || (list->value == sort->smallest && list->next->value == sort->biggest) || (sort->last_value_b == sort->smallest && list->value == sort->biggest))
 			return (i);
 		else
 			list = list->next;
