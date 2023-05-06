@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:32:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/05 21:35:57 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/05 23:38:54 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,11 @@ void	sort_ha(t_sort *s, t_list **ha, t_list **hb)
 	if (s->print)
 		printf("\nSort ha\n");
 
+	if (steps_to_value(s, *ha, b->value) <= steps_to_value(s, *hb, a->value))
+		ra(s, ha, 0);
+	else
+		rra(s, ha, 0);
+
 	if (b->value > a->value && b->value > s->last_value_a && a->value < s->last_value_a)
 	{
 		pa(ha, hb);
@@ -171,25 +176,25 @@ void	sort_ha(t_sort *s, t_list **ha, t_list **hb)
 	{
 		pa(ha, hb);
 	}
-	else if (b->value > a->value && b->value < s->last_value_a && a->value < s->last_value_a)
-	{
-		ra(s, ha, 0);
-		s->steps_to_last_a--;
-	}
+	// else if (b->value > a->value && b->value < s->last_value_a && a->value < s->last_value_a)
+	// {
+	// 	ra(s, ha, 0);
+	// 	s->steps_to_last_a--;
+	// }
 	else if (b->value < a->value && b->value > s->last_value_a && a->value > s->last_value_a)
 	{
 		pa(ha, hb);
 	}
-	else if (b->value < a->value && b->value < s->last_value_a && a->value > s->last_value_a)
-	{
-		ra(s, ha, 0);
-		s->steps_to_last_a--;
-	}
-	else if (b->value > a->value && b->value > s->last_value_a && a->value > s->last_value_a)
-	{
-		ra(s, ha, 0);
-		s->steps_to_last_a--;
-	}
+	// else if (b->value < a->value && b->value < s->last_value_a && a->value > s->last_value_a)
+	// {
+	// 	ra(s, ha, 0);
+	// 	s->steps_to_last_a--;
+	// }
+	// else if (b->value > a->value && b->value > s->last_value_a && a->value > s->last_value_a)
+	// {
+	// 	ra(s, ha, 0);
+	// 	s->steps_to_last_a--;
+	// }
 }
 
 void	sort_hb(t_sort *s, t_list **ha, t_list **hb)
