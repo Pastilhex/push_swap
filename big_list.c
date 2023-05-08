@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:32:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/08 15:56:24 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:08:58 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ void	big_list(t_sort *s, t_list **header_a, t_list **header_b)
 
 void	big_unsorted(t_sort *s, t_list **ha, t_list **hb)
 {
+	if (*ha)
+		s->last_value_a = find_last_value(*ha);
+
+	if (*hb)
+		s->last_value_b = find_last_value(*hb);
+	
 	if (size_list(hb) == 0 && s->first_step == 1)
 	{
 		pb(ha, hb);
@@ -81,15 +87,16 @@ void	sort_ha(t_sort *s, t_list **ha, t_list **hb)
 	// 	pb(ha, hb);
 	// }
 
-	if (s->print)
-		printf("Last A:%d   Last B:%d\n", s->last_value_a, s->last_value_b);
-	
 	else if (a->value < b->value && a->value < s->last_value_b && b->value < s->last_value_b)
 	{
+		if (s->print)
+			printf("A:%lld   B:%lld   Last A:%d   Last B:%d\n", a->value, b->value,s->last_value_a, s->last_value_b);
+		
 		if (s->print)
 			printf("C\n");
 		rb(s, hb, 0);
 		pb(ha, hb);
 	}
-//	else if ()	
+
+	
 }
