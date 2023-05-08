@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/05 19:25:56 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/04 06:46:52 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,16 @@ typedef struct s_sort
 	int		full_size;
 	int		ha_size;
 	int		hb_size;
+	int		total_sum;
+	int		sorted_nbrs;
 	int		reverse_cycle;
 	int		mix_cycle;
+	int		cycle_a;
+	int		cycle_b;
 	int		steps_to_last_a;
 	int		first_step;
 	int		second_step;
 	int		x_args;
-	int		y_count;
-	int		is_asc;
-	int		is_first;
 	t_list	*a;
 	t_list	*b;
 }	t_sort;
@@ -82,7 +83,6 @@ void	sort_ha(t_sort *s, t_list **ha, t_list **hb);
 void	sort_hb(t_sort *s, t_list **ha, t_list **hb);
 int		verify_order_x(t_list **header, int x);
 void	reverse_sort(t_sort *s, t_list **ha, t_list **hb);
-void	final_sort(t_sort *s, t_list **ha, t_list **hb);
 
 //Operation Functions
 void	sa(t_list **header, int flag);

@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/05 21:07:53 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:27:06 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void	sorted(t_sort *s, t_list **header_a, t_list **header_b)
 {
 	(void) s;
 	(void) header_b;
+	printf("Total:%d\n", s->full_size);
 	if (verify_order(header_a) == 1)
 		exit (0);
 }
