@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/01 22:35:55 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:34:40 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,9 @@ int	steps_to_value(t_sort *sort, t_list *list, int value)
 	while (list->next != NULL)
 	{
 		i++;
-		if ((value > list->value && value < list->next->value) || (list->value == sort->smallest && list->next->value == sort->biggest) || (sort->last_value_b == sort->smallest && list->value == sort->biggest))
+		if ((value > list->value && value < list->next->value)
+			|| (list->value == sort->smallest && list->next->value == sort->biggest)
+			|| (sort->last_value_b == sort->smallest && list->value == sort->biggest))
 			return (i);
 		else
 			list = list->next;
@@ -100,11 +102,14 @@ int	steps_to(t_sort *sort, t_list *list, int value)
 	(void) sort;
 	while (list->next != NULL)
 	{
-		if (value != list->value)
-			i++;
+		i++;
+		if ((value > list->value && value < list->next->value)
+			|| (list->value == sort->smallest && list->next->value == sort->biggest)
+			|| (sort->last_value_b == sort->smallest && list->value == sort->biggest)
+			|| (value < list->value && value > list->next->value))
+			return (i);
 		else
-			return (i);			
-		list = list->next;
+			list = list->next;
 	}
 	return (i);
 }
@@ -160,6 +165,7 @@ void	pp(t_list **header_a, t_list **header_b)
 	(void) header_a;
 	(void) header_b;
 
+ 	printf("\n");
  	//printf("list a: ");
  	print_list(*header_a);
  	//printf("list b: ");
