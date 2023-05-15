@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/04 14:27:06 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:10:40 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	begin(t_list **header_a, t_list **header_b)
 		if (*header_b)
 			s.last_value_b = find_last_value(*header_b);
 
-		if (size_list(header_a) <= 3)
+		if (size_list(header_a) <= 4)
 		{
 			if (!verify_order(header_a) || size_list(header_b) != 0)
 				unsorted(&s, header_a, header_b);
@@ -37,9 +37,7 @@ void	begin(t_list **header_a, t_list **header_b)
 		}
 		else
 			big_list(&s, header_a, header_b);
-		//s.full_size++;
-		if (s.print)
-			pp(header_a, header_b);
+//		pp(header_a, header_b);
 		
 	}
 }
@@ -144,7 +142,6 @@ void	sorted(t_sort *s, t_list **header_a, t_list **header_b)
 {
 	(void) s;
 	(void) header_b;
-	printf("Total:%d\n", s->full_size);
 	if (verify_order(header_a) == 1)
 		exit (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/09 14:30:07 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/15 18:48:46 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ typedef struct s_sort
 	int		last_value_a;
 	int		last_value_b;
 	int		smallest;
+	int		smallest_a;
 	int		biggest;
+	int		biggest_a;
 	int		full_size;
 	int		ha_size;
 	int		hb_size;
@@ -78,12 +80,11 @@ int		half_list(t_list **header);
 int		sum_list(t_list **header);
 int		verify_rev_in_order(t_sort	*sort, t_list **header);
 int		steps_to(t_sort *sort, t_list *list, int value);
-void	choose_side(t_sort *s, t_list **ha, t_list **hb);
-void	restart_sort(t_sort *s, t_list **ha, t_list **hb);
 void	sort_ha(t_sort *s, t_list **ha, t_list **hb);
-void	sort_hb(t_sort *s, t_list **ha, t_list **hb);
 int		verify_order_x(t_list **header, int x);
+void	choose_sort(t_sort *s, t_list **ha, t_list **hb);
 void	reverse_sort(t_sort *s, t_list **ha, t_list **hb);
+int		count_steps(t_sort *sort, t_list *ha, t_list *hb);
 
 //Operation Functions
 void	sa(t_list **header, int flag);

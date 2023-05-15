@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:20:16 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/18 14:50:01 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:19:19 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ void	ra(t_sort *sort, t_list **header, int flag)
 		last->next = list;
 		list->next = NULL;
 	}
-
 }
