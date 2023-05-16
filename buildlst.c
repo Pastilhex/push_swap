@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/15 21:23:27 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/16 22:24:00 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,52 +126,18 @@ int	steps_to_value(t_sort *sort, t_list *list, int value)
 	return (i);
 }
 
-int	count_steps(t_sort *sort, t_list *ha, t_list *hb)
-{
-	int	steps_in_ha;
-	int	total_nbr_of_steps;
-	int	rr;
-	int	rb;
-	int ra;
 
-	steps_in_ha = 0;
-	total_nbr_of_steps = INT_MAX;
-	while (hb->next != NULL)
-	{
-		steps_in_ha++;
-		ra = 0;
-		rr = steps_to(sort, ha, hb->value);
-		rb = (steps_in_ha - rr - 1);
-		if (rb < 0)
-		{
-			ra = rr;
-			rb = 0;
-			rr = 0;
-		}
-		printf("Value:%lld ", hb->value);
-		printf("(%d RR + %d RA + %d RB)\n", rr, ra, rb);
-		printf("%d total steps \n\n", (rr + ra + rb));
-		if (steps_in_ha + rr < total_nbr_of_steps)
-			total_nbr_of_steps = steps_in_ha + rr;
-		hb = hb->next;
-	}
-	return (total_nbr_of_steps);
-}
 
 int	steps_to(t_sort *sort, t_list *list, int value)
 {
 	int	i;
-		// if ((value < list->value && sort->last_value_a == sort->biggest)
-		//  || (value > list->value && list->value == sort->smallest)
-		//  || (value < list->value && value > sort->last_value_a))
+
 	i = 0;
 	(void) sort;
 	while (list->next != NULL)
 	{
 		//printf("Value:%d  List-Value:%lld  Small:%d  Biggest:%d  Last:%d\n", value, list->value, sort->smallest, sort->biggest, sort->last_value_a);
-		if ((value < list->value && list->value < list->next->value)
-			|| (value > sort->biggest && list->value == sort->smallest)
-			|| (value < list->value && value > sort->last_value_a))
+		if ((value < list->value && value > sort->last_value_a))
 			return (i);
 		else
 			list = list->next;

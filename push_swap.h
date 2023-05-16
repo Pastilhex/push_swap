@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/15 18:48:46 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/16 22:26:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,13 @@ typedef struct s_sort
 	int		steps_to_last_a;
 	int		first_step;
 	int		second_step;
-	int		x_args;
+	int		final_step;
+	int		go_rr;
+	int		go_ra;
+	int		go_rb;
+	int		go_rrr;
+	int		go_rra;
+	int		go_rrb;
 	t_list	*a;
 	t_list	*b;
 }	t_sort;
@@ -84,7 +90,7 @@ void	sort_ha(t_sort *s, t_list **ha, t_list **hb);
 int		verify_order_x(t_list **header, int x);
 void	choose_sort(t_sort *s, t_list **ha, t_list **hb);
 void	reverse_sort(t_sort *s, t_list **ha, t_list **hb);
-int		count_steps(t_sort *sort, t_list *ha, t_list *hb);
+void	count_steps(t_sort *sort, t_list *ha, t_list *hb);
 
 //Operation Functions
 void	sa(t_list **header, int flag);
