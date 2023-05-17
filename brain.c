@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/17 07:20:02 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:20:17 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	begin(t_list **header_a, t_list **header_b)
 	s.a = *header_a;
 	s.b = *header_b;
 	s.full_size = 1;
-	s.print = 1;
+	s.print = 0;
 	while (1)
 	{
 		if (*header_a)

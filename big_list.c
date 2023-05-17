@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:32:42 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/17 14:29:38 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:20:44 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ void	big_list(t_sort *s, t_list **header_a, t_list **header_b)
 	s->final_step = 0;
 	while (1)
 	{
-		if (s->print == 1)
-		{
-			usleep(250000);
-			pp(header_a, header_b);
-			printf("\n");
-		}
+		// //usleep(200000);
+		// pp(header_a, header_b);
+		// printf("\n");
+	
 		if (verify_order(header_a) == 1 && size_list(header_b) == 0)
 			sorted(s, header_a, header_b);
 		else if (!verify_order(header_a) || (verify_order(header_a) && size_list(header_b) != 0))
@@ -56,12 +54,12 @@ void	big_unsorted(t_sort *s, t_list **ha, t_list **hb)
 			s->second_step = 1;
 		}
 	}
+	
 	else if (s->second_step == 1)
-	{
 		sort_ha(s, ha, hb);
-	}
+	
 	else if (s->final_step == 1)
-		final_sort(s, ha);
+		final_sort(s, ha, hb);
 }
 
 void	count_steps(t_sort *s, t_list *ha, t_list *hb)
@@ -85,11 +83,13 @@ void	count_steps(t_sort *s, t_list *ha, t_list *hb)
 	{
 		ra = steps_to(s, ha, hb->value);
 		rb = counter;
-		printf("Value: %lld \nSteps list a: %d\nSteps list b: %d\n", hb->value, ra, rb);
+		if (s->print == 1)
+			printf("Value: %lld \nSteps list a: %d\nSteps list b: %d\n", hb->value, ra, rb);
 		
 		if (ra > ha_size / 2 && counter <= hb_size / 2)
 		{
-			printf("TESTE A:  Size List hb: %d\n", hb_size);
+			if (s->print == 1)
+				printf("TESTE A:  Size List hb: %d\n", hb_size);
 			rra = ha_size - ra;
 			rr = 0;
 			ra = 0;
@@ -98,59 +98,97 @@ void	count_steps(t_sort *s, t_list *ha, t_list *hb)
 		}
 		else if (ra <= ha_size / 2 && counter <= hb_size / 2)
 		{
-			printf("TESTE B:  Size List hb: %d\n", hb_size);
+			if (s->print == 1)
+				printf("TESTE B:  Size List hb: %d\n", hb_size);
 			if (ra > rb && rb == 0)
 			{
+				if (s->print == 1)
+					printf("A1\n");
 				rr = 0;
+				rra = 0;
+				rrr = 0;
+				rrb = 0;
 			}
-			else if (ra > rb && rb > 0)
+			else if (ra > rb && rb <= hb_size / 2)
 			{
+				if (s->print == 1)
+					printf("A2\n");
 				rr = rb;
 				ra = ra - rb;
 				rb = rb - rr;
+				rra = 0;
+				rrr = 0;
+				rrb = 0;
+			}
+			else if (ra > rb && rb > hb_size / 2)
+			{
+				if (s->print == 1)
+					printf("A3\n");
+				rr = 0;
+				rb = 0;
+				//ra = ra - rb;
+				rrb = hb_size - counter;
+				rra = 0;
+				rrr = 0;
 			}
 			else if (ra < rb && ra == 0)
 			{
+				if (s->print == 1)
+					printf("A4\n");
 				rr = 0;
 				rb = rb - rr;
 				ra = 0;
+				rra = 0;
+				rrr = 0;
+				rrb = 0;
 			}
 			else if (ra < rb && ra > 0)
 			{
+				if (s->print == 1)
+					printf("A5\n");
 				rr = ra;
 				rb = rb - rr;
 				ra = 0;
+				rra = 0;
+				rrr = 0;
+				rrb = 0;
 			}
 			else if (ra == rb)
 			{
+				if (s->print == 1)
+					printf("A6\n");
 				rr = rb;
 				ra = 0;
 				rb = 0;
+				rra = 0;
+				rrr = 0;
+				rrb = 0;
 			}
-			rra = 0;
-			rrb = 0;
-			rrr = 0;
 		}
 		else if (ra > ha_size / 2 && counter > hb_size / 2)
 		{
-			printf("TESTE C:  Size List hb: %d\n", hb_size);
+			if (s->print == 1)
+				printf("TESTE C:  Size List hb: %d\n", hb_size);
 			if (ha_size - ra > hb_size - counter)
 			{
-				printf("A ha_size-ra:%d   hb_size-counter:%d\n", (ha_size - ra), (hb_size - counter));
-				rra = ha_size - ra; // - (hb_size - counter);
-				rrr = rrb;
-				rrb = (hb_size - counter) - (ha_size - ra);
+				if (s->print == 1)
+					printf("A ha_size-ra:%d   hb_size-counter:%d\n", (ha_size - ra), (hb_size - counter));
+				rrb = 0;
+				rra = (ha_size - ra) - (hb_size - counter); // 3 - 1;
+				rrr = (hb_size - counter);
 			}
 			else if (ha_size - ra < hb_size - counter)
 			{
-				printf("B\n");
+				if (s->print == 1)
+					printf("B\n");
 				rra = 0;
 				rrb = (hb_size - counter) - (ha_size - ra);
 				rrr = (ha_size - ra);
 			}
 			else if ((ha_size - ra) == (hb_size - counter))
 			{
-				printf("C  ha_size-ra:%d   hb_size-counter:%d\n", (ha_size - ra), (hb_size - counter));
+				if (s->print == 1)
+					printf("C  ha_size-ra:%d   hb_size-counter:%d\n", (ha_size - ra), (hb_size - counter));
 				rrr = (ha_size - ra);
 				rrb = 0;
 				rra = 0;
@@ -161,30 +199,44 @@ void	count_steps(t_sort *s, t_list *ha, t_list *hb)
 		}
 		else if (ra <= ha_size / 2 && counter > hb_size / 2)
 		{
-			printf("TESTE D:  Size List hb: %d\n", hb_size);
+			if (s->print == 1)
+				printf("TESTE D:  Size List hb: %d\n", hb_size);
 			if (ra > rb && rb == 0)
 			{
+				rb = 0;
 				rr = 0;
+				rra = 0;
+				rrb = 0;
+				rrr = 0;
 			}
 			else if (ra > rb && rb > 0)
 			{
+				rb = 0;
+				rr = 0;
+				rra = 0;
 				rrb = hb_size - counter;
+				rrr = 0;
 			}
 			else if (ra < rb && ra == 0)
 			{
+				rb = 0;
+				rr = 0;
+				rra = 0;
 				rrb = hb_size - counter;
+				rrr = 0;
 			}
 			else if (ra < rb && ra > 0)
 			{
+				rb = 0;
+				rr = 0;
+				rra = 0;
 				rrb = hb_size - counter;
+				rrr = 0;
 			}
-			rrr = 0;
-			rra = 0;
-			//ra = 0;
-			rb = 0;
 		}
 
-		printf("Total Steps: %d (%d RR + %d RA + %d RB + %d RRR + %d RRA + %d RRB) \n\n", (rr + rrr + ra + rra + rb + rrb), rr, ra, rb, rrr, rra, rrb);
+		if (s->print == 1)
+			printf("Total Steps: %d (%d RR + %d RA + %d RB + %d RRR + %d RRA + %d RRB) \n\n", (rr + rrr + ra + rra + rb + rrb), rr, ra, rb, rrr, rra, rrb);
 		
 		if ((rr + rrr + ra + rra + rb + rrb) < total_nbr_of_steps)
 		{
@@ -200,7 +252,8 @@ void	count_steps(t_sort *s, t_list *ha, t_list *hb)
 		hb = hb->next;
 		counter++;
 	}
-	printf("Less movements: %d\n", total_nbr_of_steps);
+	if (s->print == 1)
+		printf("Less movements: %d\n", total_nbr_of_steps);
 }
 
 void	sort_ha(t_sort *s, t_list **ha, t_list **hb)
@@ -215,7 +268,8 @@ void	sort_ha(t_sort *s, t_list **ha, t_list **hb)
 	
 	count_steps(s, *ha, *hb);
 	
-	printf("SORT HA (%d RR + %d RA + %d RB + %d RRR + %d RRA + %d RRB) \n\n", s->go_rr, s->go_ra, s->go_rb, s->go_rrr, s->go_rra, s->go_rrb);
+	if (s->print == 1)
+		printf("SORT HA (%d RR + %d RA + %d RB + %d RRR + %d RRA + %d RRB) \n\n", s->go_rr, s->go_ra, s->go_rb, s->go_rrr, s->go_rra, s->go_rrb);
 	
 	while (s->go_rr)
 	{
@@ -263,14 +317,23 @@ void	sort_ha(t_sort *s, t_list **ha, t_list **hb)
 	}
 }
 
-void	final_sort(t_sort *s, t_list **ha)
+void	final_sort(t_sort *s, t_list **ha, t_list **hb)
 {
+	int steps;
+
+	(void) hb;
+	find_smallest(s, *ha);
+	steps = steps_to_smallest(s, *ha, s->smallest);
+	if (s->print == 1)
+		printf("Size ha: %d, Smallest: %d, Steps to Smallest: %d\n", size_list(ha), s->smallest, steps);
+	
 	while (verify_order(ha) == 0)
 	{
-		printf("Size ha: %d, Smallest: %d, Steps to Smallest: %d\n", size_list(ha), s->smallest, steps_to_smallest(s, *ha, s->smallest));
-		if (steps_to_smallest(s, *ha, s->smallest) < size_list(ha) / 2)
+		if (steps < size_list(ha) / 2)
 			ra(s, ha, 0);
 		else
 			rra(s, ha, 0);
+		//pp(ha, hb);
+		//usleep(100000);
 	}
 }

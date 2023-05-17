@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/17 14:03:48 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:14:01 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,15 @@ int	steps_to_smallest(t_sort *sort, t_list *list, int value)
 	i = 0;
 	(void) sort;
 	while (list->next != NULL)
+	{
 		if (list->value > value)
-			list = list->next;
-		else if (list->value < value)
 		{
 			i++;
 			list = list->next;
 		}
+		else if (list->value <= value)
+			return (i);
+	}
 	return (i);
 }
 
