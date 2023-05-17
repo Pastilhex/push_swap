@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/16 22:26:32 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/17 07:29:43 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ typedef struct s_sort
 	int		total_sum;
 	int		sorted_nbrs;
 	int		reverse_cycle;
-	int		mix_cycle;
-	int		cycle_a;
-	int		cycle_b;
 	int		steps_to_last_a;
 	int		first_step;
 	int		second_step;
@@ -80,7 +77,7 @@ void	pp(t_list **header_a, t_list **header_b);
 int		verify_order(t_list **header);
 int		verify_in_order(t_sort	*sort, t_list **header);
 int		verify_rev_order(t_list **header);
-int		steps_to_big(t_sort *sort, t_list *list);
+int		steps_to_smallest(t_sort *sort, t_list *list);
 int		steps_to_value(t_sort *sort, t_list *list, int value);
 int		half_list(t_list **header);
 int		sum_list(t_list **header);
@@ -91,6 +88,7 @@ int		verify_order_x(t_list **header, int x);
 void	choose_sort(t_sort *s, t_list **ha, t_list **hb);
 void	reverse_sort(t_sort *s, t_list **ha, t_list **hb);
 void	count_steps(t_sort *sort, t_list *ha, t_list *hb);
+void	final_sort(t_sort *s, t_list **ha);
 
 //Operation Functions
 void	sa(t_list **header, int flag);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildlst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/16 22:24:00 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/17 07:38:13 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,16 @@ void	find_biggest_a(t_sort *sort, t_list *list)
 		}
 }
 
-int	steps_to_big(t_sort *sort, t_list *list)
+int	steps_to_smallest(t_sort *sort, t_list *list)
 {
 	int	i;
 
 	i = 0;
-	sort->biggest = INT_MIN;
+//	find_smallest(sort, list);
 	while (list->next != NULL)
-		if (list->value < sort->biggest)
+		if (list->value > sort->smallest)
 			list = list->next;
-		else if (list->value > sort->biggest)
+		else if (list->value < sort->smallest)
 		{
 			i++;
 			list = list->next;
@@ -131,16 +131,20 @@ int	steps_to_value(t_sort *sort, t_list *list, int value)
 int	steps_to(t_sort *sort, t_list *list, int value)
 {
 	int	i;
+	int	last;
 
 	i = 0;
-	(void) sort;
+	last = sort->last_value_a;
 	while (list->next != NULL)
 	{
-		//printf("Value:%d  List-Value:%lld  Small:%d  Biggest:%d  Last:%d\n", value, list->value, sort->smallest, sort->biggest, sort->last_value_a);
-		if ((value < list->value && value > sort->last_value_a))
+		//printf("Value:%d  List-Value:%lld  Small:%d  Biggest:%d  Last:%d\n", value, list->value, sort->smallest, sort->biggest, last);
+		if ((value < list->value && value > last) || (value < list->value && list->value == sort->smallest) || (value > sort->biggest && list->value == sort->smallest))
 			return (i);
 		else
+		{
+			last = list->value;
 			list = list->next;
+		}
 		i++;
 	}
 	return (i);

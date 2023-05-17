@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/12 20:10:40 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/17 07:20:02 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	begin(t_list **header_a, t_list **header_b)
 		else
 			big_list(&s, header_a, header_b);
 //		pp(header_a, header_b);
-		
 	}
 }
 
