@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:46:50 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/18 14:50:57 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/18 12:55:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	rra(t_sort *sort, t_list **header, int flag)
 	if (size_list(header) >= 2)
 	{
 		if (flag != 1)
-			printf("rra\n");
+			ft_putstr("rra\n");
 		list = *header;
-		while(list->next->next != NULL)
+		while (list->next->next != NULL)
 			list = list->next;
 		last = list->next;
 		list->next = NULL;

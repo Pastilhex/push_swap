@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pastilhex <pastilhex@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:20:16 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/04/13 15:04:47 by pastilhex        ###   ########.fr       */
+/*   Updated: 2023/05/18 12:56:20 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	rb(t_sort *sort, t_list **header, int flag)
 	if (size_list(header) >= 2)
 	{
 		if (flag != 1)
-			printf("rb\n");
+			ft_putstr("rb\n");
 		list = *header;
 		*header = list->next;
 		last = find_last(*header);
