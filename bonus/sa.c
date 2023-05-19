@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish.c                                           :+:      :+:    :+:   */
+/*   sa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 17:18:02 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/19 11:14:55 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/04/04 13:11:38 by pastilhex         #+#    #+#             */
+/*   Updated: 2023/05/19 18:23:31 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	free_push_swap(t_list **header_a, t_list **header_b)
+void	sa(t_list **header)
 {
-	t_list	*list_a;
-	t_list	*begin;
+	int		tmp;
+	t_list	*list;
 
-	(void) header_b;
-	list_a = *header_a;
-	while (list_a->next != NULL)
+	if (size_list(header) >= 2)
 	{
-		begin = list_a->next;
-		free (list_a);
-		list_a = begin;
+		list = *header;
+		tmp = list->value;
+		list->value = list->next->value;
+		list->next->value = tmp;
 	}
-	free (begin);
 }

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/19 10:54:35 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/19 19:10:04 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
+# include "./get_next_line/get_next_line.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 # include <limits.h>
+
+typedef struct s_gnl
+{
+	char	*move;
+}	t_gnl;
 
 typedef struct s_list
 {
@@ -53,6 +59,7 @@ typedef struct s_sort
 	int		go_rrb;
 	t_list	*a;
 	t_list	*b;
+	t_gnl	*g;
 }	t_sort;
 
 //Base Functions
@@ -98,19 +105,20 @@ void		sorted(t_sort *sort, t_list **header_a, t_list **header_b);
 void		sort_list_a(t_sort *s, t_list **ha, t_list **hb);
 void		big_list(t_sort *s, t_list **header_a, t_list **header_b);
 void		big_unsorted(t_sort *s, t_list **header_a, t_list **header_b);
-void		else_main(int argc, char **argv, t_list **header_a);
+void		else_main(int argc, char **argv, t_list **header_a, t_list **header_b);
+void		more_main(int argc, char**argv, t_list **header_a, t_list **header_b);
 
 //Operation Functions
-void		sa(t_list **header, int flag);
-void		sb(t_list **header, int flag);
-void		ss(t_list **header_a, t_list **header_b, int flag);
+void		sa(t_list **header);
+void		sb(t_list **header);
+void		ss(t_list **header_a, t_list **header_b);
 void		pa(t_list **header_a, t_list **header_b);
 void		pb(t_list **header_a, t_list **header_b);
-void		ra(t_sort *sort, t_list **header, int flag);
-void		rb(t_sort *sort, t_list **header, int flag);
-void		rr(t_sort *sort, t_list **header_a, t_list **header_b, int flag);
-void		rra(t_sort *sort, t_list **header, int flag);
-void		rrb(t_sort *sort, t_list **header, int flag);
-void		rrr(t_sort *sort, t_list **header_a, t_list **header_b, int flag);
+void		ra(t_sort *sort, t_list **header);
+void		rb(t_sort *sort, t_list **header);
+void		rr(t_sort *sort, t_list **header_a, t_list **header_b);
+void		rra(t_sort *sort, t_list **header);
+void		rrb(t_sort *sort, t_list **header);
+void		rrr(t_sort *sort, t_list **header_a, t_list **header_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 20:58:22 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/19 11:39:09 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:09:13 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	unsorted(t_sort *s, t_list **ha, t_list **hb)
 		|| (a->value > b->value && b->value < s->last_value_b
 			&& a->value < s->last_value_b && verify_rev_in_order(s, hb)))
 		pb(ha, hb);
-	unsorted_continue(s, ha, hb);
+	else
+		unsorted_continue(s, ha, hb);
 }
 
 void	unsorted_continue(t_sort *s, t_list **ha, t_list **hb)
@@ -76,6 +77,8 @@ void	ha_not_in_order(t_sort *s, t_list **ha, t_list **hb)
 	else if (a->value > a->next->value && a->value < s->last_value_a
 		&& a->next->value < s->last_value_a)
 		sa(ha, 0);
+	else
+		ha_not_in_order_continue(s, ha, hb);
 }
 
 void	ha_not_in_order_continue(t_sort *s, t_list **ha, t_list **hb)

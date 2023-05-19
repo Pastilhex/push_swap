@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pa.c                                               :+:      :+:    :+:   */
+/*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 17:42:00 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/19 11:04:56 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/04/10 18:20:16 by pastilhex         #+#    #+#             */
+/*   Updated: 2023/05/19 18:23:16 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	pa(t_list **header_a, t_list **header_b)
+void	ra(t_sort *sort, t_list **header)
 {
-	t_list	*tmp;
-	t_list	*list_a;
-	t_list	*list_b;
+	t_list	*list;
+	t_list	*last;
 
-	if (size_list(header_b) >= 1)
+	(void) sort;
+	find_last_value(*header);
+	if (size_list(header) >= 2)
 	{
-		ft_putstr("pa\n");
-		list_a = *header_a;
-		list_b = *header_b;
-		tmp = new_list(list_b->value);
-		tmp->next = list_a;
-		*header_a = tmp;
-		*header_b = list_b->next;
+		list = *header;
+		*header = list->next;
+		sort->last_value_a = list->value;
+		last = find_last(*header);
+		last->next = list;
+		list->next = NULL;
 	}
-	free (list_b);
 }
