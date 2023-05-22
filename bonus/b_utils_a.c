@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_a.c                                          :+:      :+:    :+:   */
+/*   b_utils_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/19 18:23:45 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:51:38 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,4 @@ void	find_biggest(t_sort *sort, t_list *list)
 		sort->biggest = list->value;
 		list = list->next;
 	}
-}
-
-int	steps_to_smallest(t_sort *sort, t_list *list, int value)
-{
-	int	i;
-
-	i = 0;
-	(void) sort;
-	while (list->next != NULL)
-	{
-		if (list->value > value)
-		{
-			i++;
-			list = list->next;
-		}
-		else if (list->value <= value)
-			return (i);
-	}
-	return (i);
 }

@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   b_sb.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 21:00:54 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/19 18:23:29 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/04/04 13:12:05 by pastilhex         #+#    #+#             */
+/*   Updated: 2023/05/22 12:08:06 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	rrr(t_sort *sort, t_list **header_a, t_list **header_b)
+void	sb(t_list **header)
 {
-	rra(sort, header_a);
-	rrb(sort, header_b);
+	int		tmp;
+	t_list	*list;
+
+	if (size_list(header) >= 2)
+	{
+		list = *header;
+		tmp = list->value;
+		list->value = list->next->value;
+		list->next->value = tmp;
+	}
 }

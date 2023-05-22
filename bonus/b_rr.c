@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   b_rr.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 15:47:29 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/19 18:23:14 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/04/10 20:45:01 by pastilhex         #+#    #+#             */
+/*   Updated: 2023/05/22 12:07:20 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	pb(t_list **header_a, t_list **header_b)
+void	rr(t_sort *sort, t_list **header_a, t_list **header_b)
 {
-	t_list	*tmp;
-	t_list	*list_a;
-	t_list	*list_b;
-
-	list_a = NULL;
-	if (size_list(header_a) >= 1)
-	{
-		list_a = *header_a;
-		list_b = *header_b;
-		tmp = new_list(list_a->value);
-		tmp->next = list_b;
-		*header_b = tmp;
-		*header_a = list_a->next;
-	}
-	free (list_a);
+	ra(sort, header_a);
+	rb(sort, header_b);
 }

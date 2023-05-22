@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   b_utils_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 18:20:16 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/19 18:23:16 by ialves-m         ###   ########.fr       */
+/*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
+/*   Updated: 2023/05/22 13:50:31 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ra(t_sort *sort, t_list **header)
+int	size_list(t_list **header)
+{
+	int		i;
+	t_list	*list;
+
+	i = 0;
+	list = *header;
+	while (list != NULL)
+	{
+		i++;
+		list = list->next;
+	}
+	return (i);
+}
+
+int	verify_order(t_list **header)
 {
 	t_list	*list;
-	t_list	*last;
 
-	(void) sort;
-	find_last_value(*header);
-	if (size_list(header) >= 2)
+	list = *header;
+	while (list->next != NULL)
 	{
-		list = *header;
-		*header = list->next;
-		sort->last_value_a = list->value;
-		last = find_last(*header);
-		last->next = list;
-		list->next = NULL;
+		if (list->value > list->next->value)
+			return (0);
+		list = list->next;
 	}
+	return (1);
 }

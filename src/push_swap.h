@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/19 15:21:20 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:55:54 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ void		sorted(t_sort *sort, t_list **header_a, t_list **header_b);
 void		sort_list_a(t_sort *s, t_list **ha, t_list **hb);
 void		big_list(t_sort *s, t_list **header_a, t_list **header_b);
 void		big_unsorted(t_sort *s, t_list **header_a, t_list **header_b);
-void		else_main(int argc, char **argv, t_list **header_a, t_list **header_b);
-void		more_main(int argc, char**argv, t_list **header_a, t_list **header_b);
+void		else_main(int argc, char **argv, t_list **ha, t_list **hb);
+void		more_main(int argc, char**argv, t_list **ha, t_list **hb);
 
 //Operation Functions
 void		sa(t_list **header, int flag);

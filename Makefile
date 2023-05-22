@@ -27,24 +27,25 @@ SRC =	src/push_swap.c \
 		src/pa.c \
 		src/pb.c
 
-SRC_BONUS = bonus/checker.c \
-			bonus/finish.c \
-			bonus/ft_atoll.c \
-			bonus/utils_a.c \
-			bonus/utils_b.c \
-			bonus/utils_c.c \
-			bonus/utils_d.c \
-			bonus/ra.c \
-			bonus/rb.c \
-			bonus/rr.c \
-			bonus/rra.c \
-			bonus/rrb.c \
-			bonus/rrr.c \
-			bonus/sa.c \
-			bonus/sb.c \
-			bonus/ss.c \
-			bonus/pa.c \
-			bonus/pb.c \
+SRC_BONUS = bonus/b_checker.c \
+			bonus/b_finish.c \
+			bonus/b_ft_atoll.c \
+			bonus/b_list_small.c \
+			bonus/b_utils_a.c \
+			bonus/b_utils_b.c \
+			bonus/b_utils_c.c \
+			bonus/b_utils_d.c \
+			bonus/b_ra.c \
+			bonus/b_rb.c \
+			bonus/b_rr.c \
+			bonus/b_rra.c \
+			bonus/b_rrb.c \
+			bonus/b_rrr.c \
+			bonus/b_sa.c \
+			bonus/b_sb.c \
+			bonus/b_ss.c \
+			bonus/b_pa.c \
+			bonus/b_pb.c \
 			bonus/get_next_line/get_next_line.c \
 			bonus/get_next_line/get_next_line_utils.c
 

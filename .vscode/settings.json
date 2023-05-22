@@ -8,7 +8,14 @@
 		"type_traits": "c",
 		"utility": "c",
 		"checker.h": "c",
-		"get_next_line.h": "c"
+		"get_next_line.h": "c",
+		"deque": "cpp",
+		"string": "cpp",
+		"unordered_map": "cpp",
+		"vector": "cpp",
+		"string_view": "cpp",
+		"initializer_list": "cpp",
+		"bit": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrb.c                                              :+:      :+:    :+:   */
+/*   b_pb.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 20:57:45 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/19 18:23:26 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/04/06 15:47:29 by ialves-m          #+#    #+#             */
+/*   Updated: 2023/05/22 12:06:53 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	rrb(t_sort *sort, t_list **header)
+void	pb(t_list **header_a, t_list **header_b)
 {
-	t_list	*last;
-	t_list	*list;
+	t_list	*tmp;
+	t_list	*list_a;
+	t_list	*list_b;
 
-	(void) sort;
-	if (size_list(header) >= 2)
+	list_a = NULL;
+	if (size_list(header_a) >= 1)
 	{
-		list = *header;
-		while (list->next->next != NULL)
-			list = list->next;
-		last = list->next;
-		list->next = NULL;
-		last->next = *header;
-		*header = last;
+		list_a = *header_a;
+		list_b = *header_b;
+		tmp = new_list(list_a->value);
+		tmp->next = list_b;
+		*header_b = tmp;
+		*header_a = list_a->next;
 	}
+	free (list_a);
 }
