@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   b_list_small.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/22 13:53:24 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 10:15:39 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	apply_move(t_sort *s, t_list **header_a, t_list **header_b, char *tmp)
 		sb(header_b);
 	else if (ft_strcmp(tmp, "ss\n"))
 		ss(header_a, header_b);
+	else
+		display_error();
 }
 
 void	sorted(t_sort *s, t_list **header_a, t_list **header_b)
