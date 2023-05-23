@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/22 14:00:06 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:52:11 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		begin(t_list **header_a, t_list **header_b);
 void		else_main(int argc, char **argv, t_list **ha, t_list **hb);
 void		more_main(int argc, char**argv, t_list **ha, t_list **hb);
 int			check_digit(char *input);
-void		display_error(void);
+void		display_error(t_list **header_a, t_list **header_b);
 int			find_last_value(t_list *list);
 void		free_push_swap(t_list **header_a, t_list **header_b);
 long long	ft_atoll(const char *str);
@@ -58,6 +58,7 @@ int			size_list(t_list **header);
 void		sorted(t_sort *sort, t_list **header_a, t_list **header_b);
 int			verify_order(t_list **header);
 void		apply_move(t_sort *s, t_list **ha, t_list **hb, char *tmp);
+void		go_out(t_list **header_a, t_list **header_b, char *tmp);
 
 //Operation Functions
 void		sa(t_list **header);

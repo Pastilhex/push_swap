@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/23 11:26:47 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:09:39 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	apply_move(t_sort *s, t_list **header_a, t_list **header_b, char *tmp)
 	else if (ft_strcmp(tmp, "ss\n"))
 		ss(header_a, header_b);
 	else
-		display_error();
+		go_out(header_a, header_b, tmp);
 }
 
 void	sorted(t_sort *s, t_list **header_a, t_list **header_b)
@@ -85,4 +85,14 @@ void	sorted(t_sort *s, t_list **header_a, t_list **header_b)
 		free (header_b);
 		exit (0);
 	}
+}
+
+void	go_out(t_list **header_a, t_list **header_b, char *tmp)
+{
+	ft_putstr("Error\n");
+	free_push_swap(header_a, header_b);
+	free (header_a);
+	free (header_b);
+	free (tmp);
+	exit(0);
 }
