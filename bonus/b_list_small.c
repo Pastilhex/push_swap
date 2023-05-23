@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:33:28 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/23 10:15:39 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:26:47 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@ void	begin(t_list **header_a, t_list **header_b)
 	go_to_gnl(&s, header_a, header_b);
 	if (verify_order(header_a) == 1 && size_list(header_b) == 0)
 		sorted(&s, header_a, header_b);
-	else if (verify_order(header_a) == 1 && size_list(header_b) == 1)
+	else if ((verify_order(header_a) == 1 && size_list(header_b) == 1)
+		|| (verify_order(header_a) == 0))
+	{
 		ft_putstr("KO\n");
-	else if (verify_order(header_a) == 0)
-		ft_putstr("KO\n");
+		free_push_swap(header_a, header_b);
+		free (header_a);
+		free (header_b);
+	}
 }
 
 void	go_to_gnl(t_sort *sort, t_list **header_a, t_list **header_b)
@@ -35,8 +39,10 @@ void	go_to_gnl(t_sort *sort, t_list **header_a, t_list **header_b)
 	while (tmp)
 	{
 		apply_move(sort, header_a, header_b, tmp);
+		free (tmp);
 		tmp = get_next_line(0);
 	}
+	free (tmp);
 }
 
 void	apply_move(t_sort *s, t_list **header_a, t_list **header_b, char *tmp)

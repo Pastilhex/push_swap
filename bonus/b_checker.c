@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   b_checker.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:10 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/22 13:52:48 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:25:33 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	more_main(int argc, char**argv, t_list **header_a, t_list **header_b)
 	{
 		list_a = new_list(ft_atoll(argv[1]));
 		*header_a = list_a;
+		free (header_a);
+		free (header_b);
+		free (list_a);
 	}
 	else if (argc > 2)
 	{
