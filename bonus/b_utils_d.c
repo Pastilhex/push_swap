@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   b_utils_d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/23 11:38:04 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:26:06 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,6 @@ void	ft_putstr(char *s)
 	if (s)
 		while (s[i] != '\0')
 			write(1, &s[i++], 1);
-}
-
-void	display_error(t_list **header_a, t_list **header_b)
-{
-	ft_putstr("Error\n");
-	free_push_swap(header_a, header_b);
-	free (header_a);
-	free (header_b);
-	exit(0);
 }
 
 int	ft_strcmp(char *one, char *two)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/23 11:52:11 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:33:43 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int			size_list(t_list **header);
 void		sorted(t_sort *sort, t_list **header_a, t_list **header_b);
 int			verify_order(t_list **header);
 void		apply_move(t_sort *s, t_list **ha, t_list **hb, char *tmp);
-void		go_out(t_list **header_a, t_list **header_b, char *tmp);
+void		error_no_move(t_list **header_a, t_list **header_b, char *tmp);
+void		error_not_numeric(t_list **header_a, t_list **header_b);
 
 //Operation Functions
 void		sa(t_list **header);
