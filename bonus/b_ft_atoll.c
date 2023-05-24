@@ -37,3 +37,27 @@ long long	ft_atoll(const char *str)
 	}
 	return (s * res);
 }
+
+void	free_a(t_list *list_a, t_list *begin_a)
+{
+	while (list_a != NULL)
+	{
+		begin_a = list_a->next;
+		free (list_a);
+		list_a = begin_a;
+	}
+	if (begin_a)
+		free(begin_a);
+}
+
+void	free_b(t_list *list_b, t_list *begin_b)
+{
+	while (list_b != NULL)
+	{
+		begin_b = list_b->next;
+		free (list_b);
+		list_b = begin_b;
+	}
+	if (begin_b)
+		free(begin_b);
+}

@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 22:02:06 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/19 19:10:44 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:46:33 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #  define BUFFER_SIZE 1
 # endif
 
+# include   "../checker.h"
 # include	<unistd.h>
 # include	<stdio.h>
 # include	<string.h>
@@ -29,5 +30,6 @@ char	*join(char *s1, char *s2);
 int		find(char *str, char c);
 char	*get_next_line(int fd);
 void	*ft_calloc(size_t nmemb, size_t size);
+int		check_move(char *tmp);
 
 #endif

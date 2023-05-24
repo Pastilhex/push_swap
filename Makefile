@@ -30,7 +30,7 @@ SRC =	src/push_swap.c \
 SRC_BONUS = bonus/b_checker.c \
 			bonus/b_finish.c \
 			bonus/b_ft_atoll.c \
-			bonus/b_list_small.c \
+			bonus/b_process.c \
 			bonus/b_utils_a.c \
 			bonus/b_utils_b.c \
 			bonus/b_utils_c.c \

@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:52:27 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/22 13:50:31 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:18:27 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@ int	size_list(t_list **header)
 
 	i = 0;
 	list = *header;
-	while (list != NULL)
+	if (list)
 	{
-		i++;
-		list = list->next;
+		while (list != NULL)
+		{
+			i++;
+			list = list->next;
+		}
+		return (i);
 	}
-	return (i);
+	return (0);
 }
 
 int	verify_order(t_list **header)
@@ -32,9 +36,9 @@ int	verify_order(t_list **header)
 	t_list	*list;
 
 	list = *header;
-	while (list->next != NULL)
+	while (list != NULL)
 	{
-		if (list->value > list->next->value)
+		if (list->next && list->value > list->next->value)
 			return (0);
 		list = list->next;
 	}

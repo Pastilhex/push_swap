@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:10 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/22 13:54:27 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:29:41 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	more_main(int argc, char**argv, t_list **header_a, t_list **header_b)
 	{
 		list_a = new_list(ft_atoll(argv[1]));
 		*header_a = list_a;
+		free_push_swap(header_a, header_b);
+		free (header_a);
+		free (header_b);
+		exit (0);
 	}
 	else if (argc > 2)
 	{
@@ -65,7 +69,7 @@ void	else_main(int argc, char **argv, t_list **header_a, t_list **header_b)
 	{
 		while (m <= argc - 1)
 			if (ft_atoll(argv[n]) == ft_atoll(argv[m++]))
-				display_error();
+				display_free_error(header_a, header_b);
 		n++;
 		m = n + 1;
 	}
@@ -77,4 +81,12 @@ void	else_main(int argc, char **argv, t_list **header_a, t_list **header_b)
 			add_back_list(header_a, ft_atoll(argv[n++]));
 	else
 		display_error();
+}
+
+void	display_free_error(t_list **header_a, t_list **header_b)
+{
+	ft_putstr("Error\n");
+	free (header_a);
+	free (header_b);
+	exit(0);
 }

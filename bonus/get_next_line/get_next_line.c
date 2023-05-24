@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 22:01:47 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/23 14:49:14 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:07:30 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,19 @@ char	*get_next_line(int fd)
 	estatica = get_line(estatica, fd);
 	line = buildline(estatica);
 	estatica = buildlast(estatica);
+	if (check_move(line) == 0)
+		free (estatica);
 	return (line);
+}
+
+int	check_move(char *tmp)
+{
+	if ((ft_strcmp(tmp, "pa\n")) || (ft_strcmp(tmp, "pb\n"))
+		|| (ft_strcmp(tmp, "ra\n")) || (ft_strcmp(tmp, "rb\n"))
+		|| (ft_strcmp(tmp, "rra\n")) || (ft_strcmp(tmp, "rrb\n"))
+		|| (ft_strcmp(tmp, "rr\n")) || (ft_strcmp(tmp, "rrr\n"))
+		|| (ft_strcmp(tmp, "sa\n")) || (ft_strcmp(tmp, "sb\n"))
+		|| (ft_strcmp(tmp, "ss\n")))
+		return (1);
+	return (0);
 }

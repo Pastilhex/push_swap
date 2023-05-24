@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 18:40:43 by pastilhex         #+#    #+#             */
-/*   Updated: 2023/05/23 14:33:43 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:40:59 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ int			verify_order(t_list **header);
 void		apply_move(t_sort *s, t_list **ha, t_list **hb, char *tmp);
 void		error_no_move(t_list **header_a, t_list **header_b, char *tmp);
 void		error_not_numeric(t_list **header_a, t_list **header_b);
+void		error_ko(t_list **header_a, t_list **header_b);
+void		free_a(t_list *list_a, t_list *begin_a);
+void		free_b(t_list *list_b, t_list *begin_b);
 
 //Operation Functions
 void		sa(t_list **header);
