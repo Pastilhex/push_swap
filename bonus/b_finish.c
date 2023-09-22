@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:18:02 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/05/24 17:43:57 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:22:38 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	error_not_numeric(t_list **header_a, t_list **header_b)
 void	display_error(t_list **header_a, t_list **header_b)
 {
 	ft_putstr("Error\n");
-	(void) header_a;
-	(void) header_b;
+	free (header_a);
+	free (header_b);
 	exit(0);
 }
 
